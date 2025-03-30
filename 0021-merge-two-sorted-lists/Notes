@@ -1,0 +1,1 @@
+- Remember to have a dummy head value to start off with. When returning the new list, you return dummy.next (which is the actual head of the linked list)
