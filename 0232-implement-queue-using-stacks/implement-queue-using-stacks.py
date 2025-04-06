@@ -5,18 +5,14 @@ class MyQueue:
         self.outStack = []
 
     def push(self, x: int) -> None:
-        if not len(self.inStack):
-            self.inStack.append(x)
-        else:
-            for val in self.outStack:
-                self.inStack.append(self.outStack.pop)
-            self.inStack.append(x)
+        self.inStack.append(x)
 
     def pop(self) -> int:
         if not len(self.outStack):
-            for _ in range(len(self.inStack)):
-                popped = self.inStack.pop()
-                self.outStack.append(popped)
+            for i in range(len(self.inStack)-1, -1, -1):
+                self.outStack.append(self.inStack[i])
+        if len(self.inStack):
+            self.inStack = self.inStack[1::]
         popped = self.outStack.pop()
         return popped
         
