@@ -8,14 +8,13 @@ class MyQueue:
         self.inStack.append(x)
 
     def pop(self) -> int:
+        popped = int
         if not len(self.outStack):
             for i in range(len(self.inStack)-1, -1, -1):
-                self.outStack.append(self.inStack[i])
-        if len(self.inStack):
-            self.inStack = self.inStack[1::]
+                self.outStack.append(self.inStack.pop())
         popped = self.outStack.pop()
         return popped
-        
+                
     def peek(self) -> int:
         if len(self.outStack):
             return self.outStack[len(self.outStack)-1]
