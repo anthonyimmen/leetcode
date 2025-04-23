@@ -16,4 +16,15 @@ class Solution:
             maxSum = max(currSum, maxSum)
         
         return maxSum
+
+        # correct implementation of kadane's algo
+        # maxSum = nums[0]
+        # currSum = 0
+
+        # for num in nums:
+        #     if currSum < 0:
+        #         currSum = 0
+        #     currSum += num
+        #     maxSum = max(currSum, maxSum)
+        # return maxSum
         
