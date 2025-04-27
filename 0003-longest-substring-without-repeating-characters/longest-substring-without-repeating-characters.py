@@ -16,10 +16,8 @@ class Solution:
                 appeared[s[right]] = right
                 maxSum = max(maxSum, right-left + 1)
         
-        if len(s):
-            return maxSum
-        else:
-            return 0
+        return maxSum
+
             
 
 
