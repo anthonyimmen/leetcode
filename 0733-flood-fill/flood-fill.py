@@ -1,17 +1,29 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        startColor = image[sr][sc]
+        # dfs in all directions
 
-        print(len(image), len(image[0]))
-        def fill(x, y, grid):
-            if x < len(grid) and x >= 0 and y < len(grid[0]) and y >= 0: 
-                if grid[x][y] == startColor and grid[x][y] != color:
-                    grid[x][y] = color
-                    fill(x+1, y, grid)
-                    fill(x-1, y, grid)
-                    fill(x, y+1, grid)
-                    fill(x, y-1, grid)
-            return grid
+        original = image[sr][sc]
+
+        def fill(box, r, c):
+            print(box, r, c)
+            if box[r][c] == color:
+                return box
+            if box[r][c] == original:
+                box[r][c] = color
+                if r+1 < len(box):
+                    fill(box, r+1, c)
+                if c+1 < len(box[0]):
+                    fill(box, r, c+1)
+                if r-1 >= 0:
+                    fill(box, r-1, c)
+                if c-1 >= 0:
+                    fill(box, r, c-1)
+            return box
         
-        return fill(sr, sc, image)
+        return fill(image, sr, sc)
+
+
+
+
+
         
